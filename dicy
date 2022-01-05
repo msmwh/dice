@@ -1,0 +1,27 @@
+const pic = document.querySelector(".lol_");
+const btn = document.querySelector(".button");
+
+score = 20;
+
+pic.classList.add("hidden");
+btn.addEventListener("click", function () {
+  const random_number = Math.floor(Math.random() * 6) + 1;
+  const my_guess = document.querySelector(".field__input").value;
+  pic.src = `dice-${random_number}.png`;
+  pic.classList.remove("hidden");
+  if (my_guess == random_number) {
+    score++;
+    document.body.style.backgroundColor = "green";
+    document.querySelector(".ajab").textContent = score;
+    if (score == 0 || score < 0) {
+      document.querySelector(".ajab").textContent = "you lose";
+    }
+  } else {
+    score--;
+    document.querySelector(".ajab").textContent = score;
+    document.body.style.backgroundColor = "red";
+    if (score == 0 || score < 0) {
+      document.querySelector(".ajab").textContent = "you lose";
+    }
+  }
+});
